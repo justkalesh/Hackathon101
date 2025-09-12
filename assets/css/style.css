@@ -1,0 +1,19 @@
+.hero {
+    background-image: url('../assets/images/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.features img {
+    height: 100px;
+}
+
+@media (max-width: 768px) {
+    .hero h2 { font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+    nav ul { flex-direction: column; }
+    nav ul li { margin-bottom: 10px; }
+}

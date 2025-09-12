@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco-Impact Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+    .btn {
+      background: #4f46e5;
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #4338ca;
+    }
+    .hero img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fafafa;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .progress {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #4f46e5;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero img {
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>Discover Your Daily Eco-Impact</h1>
+        <p>Manage your groceries, track leftovers, and find new recipes to live a more sustainable life.</p>
+        <a href="#" class="btn" id="learnMoreBtn">Learn More</a>
+      </div>
+      <img src="https://picsum.photos/400/250?random=1" alt="Eco Impact">
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="card" onclick="window.location.href='groceries.html'">
+        <img src="https://img.icons8.com/color/96/shopping-cart.png" alt="">
+        <h3>Groceries</h3>
+      </div>
+      <div class="card" onclick="alert('Leftovers feature coming soon!')">
+        <img src="https://img.icons8.com/color/96/salad.png" alt="">
+        <h3>Leftovers</h3>
+      </div>
+      <div class="card" onclick="alert('Recipe feature coming soon!')">
+        <img src="https://img.icons8.com/color/96/ingredients.png" alt="">
+        <h3>Recipe</h3>
+      </div>
+      <div class="card" onclick="alert('Reminder feature coming soon!')">
+        <img src="https://img.icons8.com/color/reminder" alt="">
+        <h3>Reminder</h3>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("learnMoreBtn").addEventListener("click", function(event) {
+      event.preventDefault();
+      alert("Learn more about how you can reduce waste and live sustainably!");
+    });
+  </script>
+</body>
+</html>
