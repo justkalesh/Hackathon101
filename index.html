@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eco-Impact Tracker</title>
+  <title>Eco-Impact Tracker | Sustainable Living Made Easy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -11,136 +12,529 @@
       box-sizing: border-box;
     }
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #334155;
+      line-height: 1.6;
     }
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 1rem;
+      padding: 0 1rem;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4f46e5;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #4f46e5;
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #4f46e5;
+      border: 1px solid #4f46e5;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background: #4f46e5;
+      color: #fff;
     }
 
     /* Hero Section */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 3rem;
       align-items: center;
+      padding: 4rem 0;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
       margin: 2rem 0;
     }
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
+    .stat {
+      text-align: center;
     }
-    .hero p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 1.2rem;
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4f46e5;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #64748b;
     }
     .btn {
       background: #4f46e5;
       color: #fff;
-      padding: 0.8rem 1.4rem;
-      border-radius: 6px;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
       text-decoration: none;
-      transition: 0.3s;
+      transition: all 0.3s;
       display: inline-block;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
     }
     .btn:hover {
       background: #4338ca;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
     }
-    .hero img {
+    .hero-image {
+      position: relative;
+    }
+    .hero-image img {
       width: 100%;
       border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .floating-card {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 280px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     /* Features */
+    .section-title {
+      text-align: center;
+      margin: 4rem 0 2rem;
+    }
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+    .section-title p {
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 2rem;
+      margin: 3rem 0;
     }
     .card {
-      background: #fafafa;
+      background: #fff;
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 2rem;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s ease;
       cursor: pointer;
+      border: 1px solid #f1f5f9;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
     }
-    .card img {
-      width: 100px;
-      margin-bottom: 1rem;
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      background: #eef2ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      transition: all 0.3s;
+    }
+    .card:hover .card-icon {
+      background: #4f46e5;
+      transform: scale(1.1);
+    }
+    .card:hover .card-icon i {
+      color: #fff;
+    }
+    .card-icon i {
+      font-size: 2rem;
+      color: #4f46e5;
+      transition: all 0.3s;
     }
     .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
     }
-    .progress {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
+    .card p {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-link {
       color: #4f46e5;
-      font-weight: bold;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .card-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+    .footer-column h3 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    .footer-column ul {
+      list-style: none;
+    }
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-column a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-column a:hover {
+      color: #fff;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #334155;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      background: #4f46e5;
+      transform: translateY(-3px);
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 0.9rem;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+      }
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
       }
-      .hero img {
-        margin-top: 1rem;
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .floating-card {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin: 1rem auto 0;
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-outline, .btn {
+        text-align: center;
+        width: 100%;
+      }
+      .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <i class="fas fa-leaf"></i>
+          <span>Eco-Impact Tracker</span>
+        </div>
+        <div class="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Features</a>
+          <a href="#">How It Works</a>
+          <a href="#">About</a>
+        </div>
+        <div class="auth-buttons">
+          <a href="#" class="btn-outline">Log In</a>
+          <a href="#" class="btn">Sign Up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
   <div class="container">
-    <!-- Hero -->
     <section class="hero">
-      <div>
-        <h1>Discover Your Daily Eco-Impact</h1>
-        <p>Manage your groceries, track leftovers, and find new recipes to live a more sustainable life.</p>
-        <a href="#" class="btn" id="learnMoreBtn">Learn More</a>
+      <div class="hero-content">
+        <h1>Track Your Way to a Sustainable Lifestyle</h1>
+        <p>Manage your groceries, reduce food waste, and discover eco-friendly recipes to minimize your environmental footprint one meal at a time.</p>
+        <a href="#" class="btn">Start Your Journey</a>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">87%</div>
+            <div class="stat-label">Waste Reduction</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">2.5K+</div>
+            <div class="stat-label">Users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">12K+</div>
+            <div class="stat-label">Meals Saved</div>
+          </div>
+        </div>
       </div>
-      <img src="https://picsum.photos/400/250?random=1" alt="Eco Impact">
+      
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Sustainable food choices">
+        <div class="floating-card">
+          <div class="floating-icon">
+            <i class="fas fa-award" style="color: #4f46e5; font-size: 2rem;"></i>
+          </div>
+          <div>
+            <h4>Eco Warrior Achievement!</h4>
+            <p>You've saved 12kg CO2 this month</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Features -->
+    <div class="section-title">
+      <h2>Make Sustainability Simple</h2>
+      <p>Our features help you reduce waste, save money, and protect the planet</p>
+    </div>
+
     <section class="features">
       <div class="card" onclick="window.location.href='groceries.html'">
-        <img src="https://img.icons8.com/color/96/shopping-cart.png" alt="">
-        <h3>Groceries</h3>
+        <div class="card-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <h3>Smart Grocery Tracking</h3>
+        <p>Log your purchases, track expiration dates, and get smart usage suggestions to prevent food waste.</p>
+        <a href="groceries.html" class="card-link">
+          <span>Explore</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
-      <div class="card" onclick="alert('Leftovers feature coming soon!')">
-        <img src="https://img.icons8.com/color/96/salad.png" alt="">
-        <h3>Leftovers</h3>
+      
+      <div class="card" onclick="window.location.href='leftovers.html'">
+        <div class="card-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <h3>Leftovers Manager</h3>
+        <p>Track your leftovers and get creative recipe ideas to give them a delicious second life.</p>
+        <a href="leftovers.html" class="card-link">
+          <span>Explore</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
-      <div class="card" onclick="alert('Recipe feature coming soon!')">
-        <img src="https://img.icons8.com/color/96/ingredients.png" alt="">
-        <h3>Recipe</h3>
+      
+      <div class="card" onclick="window.location.href='recipes.html'">
+        <div class="card-icon">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <h3>Eco Recipe Database</h3>
+        <p>Discover sustainable recipes that help you use what you have and reduce your environmental impact.</p>
+        <a href="recipes.html" class="card-link">
+          <span>Explore</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
-      <div class="card" onclick="alert('Reminder feature coming soon!')">
-        <img src="https://img.icons8.com/color/reminder" alt="">
-        <h3>Reminder</h3>
+      
+      <div class="card" onclick="window.location.href='reminders.html'">
+        <div class="card-icon">
+          <i class="fas fa-bell"></i>
+        </div>
+        <h3>Smart Reminders</h3>
+        <p>Get timely notifications about expiring food and personalized suggestions for usage.</p>
+        <a href="reminders.html" class="card-link">
+          <span>Explore</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </section>
   </div>
 
-  <!-- JavaScript -->
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Eco-Impact Tracker</h3>
+          <p>Helping you build sustainable habits that benefit both your household and the planet.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Grocery Tracking</a></li>
+            <li><a href="#">Leftovers Manager</a></li>
+            <li><a href="#">Recipe Database</a></li>
+            <li><a href="#">Smart Reminders</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Mission</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Subscribe</h3>
+          <p>Join our newsletter for sustainability tips and product updates.</p>
+          <form>
+            <input type="email" placeholder="Your email address" style="padding: 0.8rem; width: 100%; border-radius: 6px; border: none; margin-top: 0.5rem;">
+            <button type="submit" class="btn" style="margin-top: 1rem; width: 100%;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Eco-Impact Tracker. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById("learnMoreBtn").addEventListener("click", function(event) {
-      event.preventDefault();
-      alert("Learn more about how you can reduce waste and live sustainably!");
+    // Simple animation for stats counter
+    document.addEventListener('DOMContentLoaded', function() {
+      const stats = document.querySelectorAll('.stat-number');
+      stats.forEach(stat => {
+        const target = parseInt(stat.innerText);
+        let current = 0;
+        const increment = target / 50;
+        
+        const updateStat = () => {
+          if (current < target) {
+            current += increment;
+            stat.innerText = Math.round(current) + (stat.innerText.includes('%') ? '%' : '+');
+            setTimeout(updateStat, 50);
+          } else {
+            stat.innerText = stat.innerText.includes('%') ? target + '%' : target + '+';
+          }
+        };
+        
+        setTimeout(updateStat, 1000);
+      });
     });
   </script>
 </body>
